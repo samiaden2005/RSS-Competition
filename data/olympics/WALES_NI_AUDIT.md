@@ -4,6 +4,18 @@ Date: 2026-07-19
 Scope: `data/olympics/gb_apportionment_2020.csv`, `data/world_athletics/gb_apportionment_2022.csv`,
 `data/olympics/gb_apportionment_2024.csv`, `data/world_athletics/gb_apportionment_2025.csv`
 
+**STATUS (2026-07-19): Recommendation implemented.** All `gb_apportionment_*.csv` files (athletics
+and swimming, Olympics and World Championships) now carry a `share` column, and every mixed-nation
+relay is apportioned fractionally by final-race roster composition instead of winner-take-all
+majority. This resolved all three masked cases below (Azu/Wales and the two Yeargin/Scotland cases)
+plus a genuine 4-way tie in swimming's 2025 Worlds 4x200m freestyle relay gold that previously
+needed an ad hoc tie-break. All corresponding `medals_<year>*.csv` files were recomputed from the
+updated shares; grand totals are unchanged (medals were reallocated, not created or destroyed).
+One additional pre-existing error was caught and fixed in the process: World Aquatics 2022's
+Men's 4x200m freestyle relay bronze had incorrectly combined heats-only and final rosters when
+computing its majority (wrongly counting heats-only Matthew Richards/Wales); corrected to unanimous
+England per the final-roster-only convention used everywhere else.
+
 ## Conclusion
 
 **Both (a) and (b).** The zero-Wales/zero-NI picture is overwhelmingly a genuine reflection of

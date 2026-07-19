@@ -5,7 +5,7 @@ Athletics,Canada,3,1,1,5
 Athletics,Netherlands,2,1,3,6
 Athletics,Spain,2,1,1,4
 Athletics,Norway,2,1,0,3
-Athletics,England,1,3,5,9
+Athletics,England,1,3,4.5,8.5
 Athletics,Jamaica,1,3,2,6
 Athletics,Ethiopia,1,3,0,4
 Athletics,Australia,1,2,4,7
@@ -29,12 +29,12 @@ Athletics,Sweden,1,0,0,1
 Athletics,South Africa,0,2,0,2
 Athletics,Italy,0,1,2,3
 Athletics,Brazil,0,1,1,2
+Athletics,Scotland,0,1,0.25,1.25
 Athletics,France,0,1,0,1
 Athletics,Hungary,0,1,0,1
 Athletics,India,0,1,0,1
 Athletics,Lithuania,0,1,0,1
 Athletics,Portugal,0,1,0,1
-Athletics,Scotland,0,1,0,1
 Athletics,Grenada,0,0,2,2
 Athletics,Algeria,0,0,1,1
 Athletics,Croatia,0,0,1,1
@@ -43,3 +43,4 @@ Athletics,Poland,0,0,1,1
 Athletics,Puerto Rico,0,0,1,1
 Athletics,Qatar,0,0,1,1
 Athletics,Zambia,0,0,1,1
+Athletics,Wales,0,0,0.25,0.25

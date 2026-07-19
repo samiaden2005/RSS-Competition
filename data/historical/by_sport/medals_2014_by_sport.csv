@@ -1,0 +1,111 @@
+sport,country,gold,silver,bronze,total
+Athletics,Kenya,10,10,3,23
+Athletics,Jamaica,10,3,6,19
+Athletics,Australia,8,1,3,12
+Athletics,England,5,13,9,27
+Athletics,Canada,5,2,10,17
+Athletics,South Africa,3,4,2,9
+Athletics,Nigeria,3,3,1,7
+Athletics,New Zealand,1,2,2,5
+Athletics,Scotland,1,2,1,4
+Athletics,India,1,1,1,3
+Athletics,Uganda,1,0,2,3
+Athletics,Grenada,1,0,1,2
+Athletics,Botswana,1,0,0,1
+Athletics,Trinidad and Tobago,0,3,4,7
+Athletics,Wales,0,2,1,3
+Athletics,Cyprus,0,2,0,2
+Athletics,Bahamas,0,1,1,2
+Athletics,Mozambique,0,1,0,1
+Athletics,Namibia,0,0,2,2
+Athletics,Barbados,0,0,1,1
+Athletics,Saint Lucia,0,0,1,1
+Swimming,Australia,19,21,17,57
+Swimming,England,10,10,8,28
+Swimming,Canada,4,1,6,11
+Swimming,South Africa,3,3,6,12
+Swimming,Scotland,3,3,4,10
+Swimming,New Zealand,3,1,0,4
+Swimming,Wales,2,2,3,7
+Swimming,Jamaica,0,1,1,2
+Swimming,Bahamas,0,1,0,1
+Swimming,Singapore,0,1,0,1
+Artistic Gymnastics,England,9,5,5,19
+Artistic Gymnastics,Canada,3,3,3,9
+Artistic Gymnastics,Scotland,2,2,1,5
+Artistic Gymnastics,Australia,0,4,0,4
+Artistic Gymnastics,Wales,0,0,2,2
+Artistic Gymnastics,New Zealand,0,0,1,1
+Artistic Gymnastics,Singapore,0,0,1,1
+Artistic Gymnastics,India,0,0,1,1
+Boxing,England,5,1,1,7
+Boxing,Northern Ireland,2,2,5,9
+Boxing,Australia,2,1,0,3
+Boxing,Scotland,2,0,2,4
+Boxing,Canada,1,1,1,3
+Boxing,New Zealand,1,1,0,2
+Boxing,India,0,4,1,5
+Boxing,Mauritius,0,1,0,1
+Boxing,Namibia,0,1,0,1
+Boxing,Pakistan,0,1,0,1
+Boxing,Wales,0,0,5,5
+Boxing,Nigeria,0,0,3,3
+Boxing,Uganda,0,0,2,2
+Boxing,Ghana,0,0,1,1
+Boxing,Kenya,0,0,1,1
+Boxing,Mozambique,0,0,1,1
+Boxing,South Africa,0,0,1,1
+Boxing,Trinidad and Tobago,0,0,1,1
+Boxing,Zambia,0,0,1,1
+Judo,England,6,4,3,13
+Judo,Scotland,6,2,5,13
+Judo,South Africa,1,1,2,4
+Judo,Wales,1,0,1,2
+Judo,New Zealand,0,2,3,5
+Judo,India,0,2,2,4
+Judo,Cameroon,0,1,1,2
+Judo,Cyprus,0,1,0,1
+Judo,Pakistan,0,1,0,1
+Judo,Australia,0,0,4,4
+Judo,Canada,0,0,3,3
+Judo,Ghana,0,0,1,1
+Judo,Mauritius,0,0,1,1
+Judo,Northern Ireland,0,0,1,1
+Judo,Zambia,0,0,1,1
+Track Cycling,Australia,7,8,5,20
+Track Cycling,New Zealand,4,2,5,11
+Track Cycling,England,4,3,2,9
+Track Cycling,Scotland,2,2,1,5
+Track Cycling,Wales,0,1,2,3
+Track Cycling,Isle of Man,0,1,0,1
+Track Cycling,Malaysia,0,0,1,1
+Track Cycling,Canada,0,0,1,1
+Netball,Australia,1,0,0,1
+Netball,New Zealand,0,1,0,1
+Netball,Jamaica,0,0,1,1
+Weightlifting,India,3,5,6,14
+Weightlifting,Nigeria,2,6,1,9
+Weightlifting,Canada,2,0,2,4
+Weightlifting,Papua New Guinea,2,0,0,2
+Weightlifting,England,1,1,2,4
+Weightlifting,New Zealand,1,1,1,3
+Weightlifting,Malaysia,1,1,1,3
+Weightlifting,Cameroon,1,0,0,1
+Weightlifting,Cyprus,1,0,0,1
+Weightlifting,Kiribati,1,0,0,1
+Weightlifting,Samoa,0,2,1,3
+Weightlifting,Australia,0,1,2,3
+Weightlifting,Nauru,0,1,0,1
+Weightlifting,Sri Lanka,0,1,0,1
+Weightlifting,Fiji,0,0,1,1
+Weightlifting,Kenya,0,0,1,1
+Weightlifting,Wales,0,0,1,1
+Bowls,South Africa,5,0,2,7
+Bowls,Scotland,3,1,0,4
+Bowls,England,1,3,2,6
+Bowls,New Zealand,1,1,1,3
+Bowls,Malaysia,0,2,0,2
+Bowls,Australia,0,1,3,4
+Bowls,Northern Ireland,0,1,1,2
+Bowls,Canada,0,1,0,1
+Bowls,Wales,0,0,1,1

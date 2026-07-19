@@ -1,0 +1,38 @@
+rank,country,gold,silver,bronze,total,host
+1,England,58,59,57,174,0
+2,Australia,49,42,46,137,0
+3,Canada,32,16,34,82,0
+4,Scotland,19,15,19,53,1
+5,India,15,30,19,64,0
+6,New Zealand,14,14,17,45,0
+7,South Africa,13,10,17,40,0
+8,Nigeria,11,11,14,36,0
+9,Kenya,10,10,5,25,0
+10,Jamaica,10,4,8,22,0
+11,Singapore,8,5,4,17,0
+12,Malaysia,6,7,6,19,0
+13,Wales,5,11,20,36,0
+14,Cyprus,2,4,2,8,0
+15,Northern Ireland,2,3,7,12,0
+16,Papua New Guinea,2,0,0,2,0
+17,Cameroon,1,3,3,7,0
+18,Uganda,1,0,4,5,0
+19,Grenada,1,0,1,2,0
+20,Botswana,1,0,0,1,0
+20,Kiribati,1,0,0,1,0
+22,Trinidad and Tobago,0,3,5,8,0
+23,Pakistan,0,3,1,4,0
+24,Bahamas,0,2,1,3,0
+24,Samoa,0,2,1,3,0
+26,Namibia,0,1,2,3,0
+27,Mauritius,0,1,1,2,0
+27,Mozambique,0,1,1,2,0
+29,Bangladesh,0,1,0,1,0
+29,Isle of Man,0,1,0,1,0
+29,Nauru,0,1,0,1,0
+29,Sri Lanka,0,1,0,1,0
+33,Ghana,0,0,2,2,0
+33,Zambia,0,0,2,2,0
+35,Barbados,0,0,1,1,0
+35,Fiji,0,0,1,1,0
+35,Saint Lucia,0,0,1,1,0

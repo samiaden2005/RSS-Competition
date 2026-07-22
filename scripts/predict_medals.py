@@ -10,7 +10,16 @@ SPORT_NAME_MAP = {"Cycling (Track)": "Track Cycling"}
 
 # Recency weights for the four past Commonwealth Games (renormalized per sport to whichever
 # years that sport was actually contested, e.g. Judo/3x3 Basketball are newer additions).
-CG_WEIGHTS = {2022: 0.40, 2018: 0.28, 2014: 0.20, 2010: 0.12}
+#
+# Equal-weighted, not recency-decayed: scripts/backtest.py holds out 2022 Birmingham, trains on
+# 2010/2014/2018 only, and scores the resulting prediction against 2022's actual result by the
+# competition's own Kendall's tau. Every recency-decay schedule tested (the original 0.40/0.28/
+# 0.20/0.12, a flatter 0.4/0.35/0.25, and 2018-only) scored worse than equal weighting across the
+# whole grid of RECENT_BLEND/ZERO_MEDAL_THRESHOLD/host-boost values tried — e.g. at this file's
+# actual RECENT_BLEND setting, equal weighting scores tau=0.6063 vs 0.5993 for the original
+# schedule. With only 3-4 Games of history per sport, the most recent single Games is too noisy a
+# sample (one country's good/bad day) to justify leaning on it more heavily than older Games.
+CG_WEIGHTS = {2022: 0.25, 2018: 0.25, 2014: 0.25, 2010: 0.25}
 
 # Recency weights for the recent global competitions (Olympics/World Championships), used only
 # for Athletics and Swimming where we have scraped, home-nation-apportioned data. These are a
@@ -19,7 +28,31 @@ RECENT_WEIGHTS = {2025: 0.40, 2024: 0.30, 2022: 0.20, 2020: 0.10}
 
 # Weight given to the recent-global-form signal vs. the Commonwealth-Games-history signal,
 # for Athletics and Swimming only.
-RECENT_BLEND = 0.6
+#
+# Lowered from 0.6: the same 2022 backtest shows tau falling monotonically as this weight rises
+# (0.6318 at blend=0 down to 0.5784 at blend=1.0, holding everything else fixed), i.e. leaning on
+# global-competition form hurt the one fold we can actually validate against. That backtest can
+# only test a single, thin recent-form source (Tokyo 2020 alone predates Birmingham 2022 in this
+# repo's data), while the real 2026 blend below draws on four sources (2020/2022/2024/2025), so
+# zeroing this out entirely would be over-fitting to that thin fold. 0.35 is a middle ground: it
+# meaningfully de-weights the recent-form signal in response to what the backtest found, without
+# discarding a plausibly-informative signal the backtest itself couldn't fairly test at full
+# strength. See scripts/backtest.py.
+RECENT_BLEND = 0.35
+
+# Host-nation medal-share boost for Glasgow 2026 (hosted by Scotland). Estimated from the three
+# genuine host-nation data points in data/historical/: each host's share of total Games medals in
+# its own hosting year, versus its average share in the other three (away) Games:
+#   England,   host of Birmingham 2022:  20.1% (host) vs 18.2% (away avg) -> x1.11
+#   Australia, host of Gold Coast 2018:  23.6% (host) vs 19.5% (away avg) -> x1.21
+#   Scotland,  host of Glasgow 2014:      6.4% (host) vs  4.7% (away avg) -> x1.36
+# All three past hosts over-performed their own away-Games trend, averaging x1.226. Used here
+# rather than Scotland's own x1.36 alone since n=1 per nation is thin; pooling three independent
+# hosts gives a steadier estimate of the effect's general size. Applied at a conservative 0.20
+# (below the 0.226 pooled point estimate) given this is still extrapolated from just three past
+# Games. Applied uniformly across sports (no by-sport host-effect data exists at usable sample
+# size) to Scotland's *total* predicted medal count only, not per-sport shares directly.
+SCOTLAND_HOST_BOOST_2026 = 0.20
 
 # Commonwealth Games athletics/swimming medal tables have always folded para-sport events into
 # the same headline total as standard events (confirmed for 2018/2022 in data/PARA_SPORT_AUDIT.md:
@@ -102,10 +135,11 @@ def load_recent_global(sport, cg_countries):
 
 
 def weighted_shares(year_country_color, weights):
-    available_years = [y for y in weights if y in year_country_color and year_country_color[y]]
+    available_years = [y for y in weights if y in year_country_color and year_country_color[y]
+                        and weights[y] > 0]
     total_w = sum(weights[y] for y in available_years)
     shares = {color: defaultdict(float) for color in MEDAL_COLORS}
-    if not available_years:
+    if not available_years or total_w == 0:
         return shares
     for color in MEDAL_COLORS:
         for year in available_years:
@@ -163,6 +197,21 @@ def predict():
                     predicted = share * n_events
                     totals[country][color] += predicted
                     sport_breakdown[sport][country] = sport_breakdown[sport].get(country, 0.0) + predicted
+
+    if "Scotland" in totals:
+        for color in MEDAL_COLORS:
+            # Host effect redistributes medals from the rest of the field, it doesn't conjure
+            # extra ones: after boosting Scotland, rescale every other country down so the
+            # color's grand total (215 golds, 215 silvers, 215 bronzes for Glasgow 2026) is
+            # conserved exactly, preserving the total-events sanity check described in the README.
+            grand_total = sum(totals[c][color] for c in totals)
+            other_total_before = grand_total - totals["Scotland"][color]
+            totals["Scotland"][color] *= (1 + SCOTLAND_HOST_BOOST_2026)
+            other_total_target = grand_total - totals["Scotland"][color]
+            scale = other_total_target / other_total_before if other_total_before else 1.0
+            for c in totals:
+                if c != "Scotland":
+                    totals[c][color] *= scale
 
     return totals, sport_breakdown
 
